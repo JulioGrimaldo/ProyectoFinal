@@ -18,8 +18,8 @@ public class conexion {
     String usuario = "unvpnwsekrcapbd1";
     String password = "AXkIRbyLueN8u4xEZ8tz";
      private Connection conn = null;
-
-    conexion() {
+//Constructor
+   public  conexion() {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -37,6 +37,7 @@ public class conexion {
             System.out.println(ex);
         }
     }
+   //Para bajas y modificaciones
     public ResultSet getQuery(String _query) {
         Statement state = null;
         ResultSet resultado = null;
@@ -50,7 +51,7 @@ public class conexion {
         }
         return resultado;
     }
-
+// Para dar altas  los datos
     public void setQuery(String _query) {
 
         Statement state = null;
