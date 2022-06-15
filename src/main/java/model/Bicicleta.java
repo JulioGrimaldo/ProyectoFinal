@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-/**
- *
- * @author julio
- */
 public class Bicicleta {
     private String Modelo;
     private String Marca;
@@ -17,6 +10,14 @@ public class Bicicleta {
 
     public Bicicleta() {
         
+    }
+
+    public Bicicleta(String Modelo, String Marca, String Color, String Tipo, int nPiezas) {
+        this.Modelo = Modelo;
+        this.Marca = Marca;
+        this.Color = Color;
+        this.Tipo = Tipo;
+        this.nPiezas = nPiezas;
     }
 
     

@@ -17,11 +17,12 @@ public class conexion {
     String url = "jdbc:mysql://bdnducfmitei5tilgawq-mysql.services.clever-cloud.com:3306/bdnducfmitei5tilgawq";
     String usuario = "unvpnwsekrcapbd1";
     String password = "AXkIRbyLueN8u4xEZ8tz";
-     private Connection conn = null;
+    private Connection conn = null;
 //Constructor
-   public  conexion() {
-        try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
+
+    public conexion() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             conn = (Connection) DriverManager.getConnection(url, usuario, password);
 
@@ -37,14 +38,15 @@ public class conexion {
             System.out.println(ex);
         }
     }
-   //Para bajas y modificaciones
+    //Para bajas y modificaciones
+
     public ResultSet getQuery(String _query) {
         Statement state = null;
         ResultSet resultado = null;
         try {
             state = (Statement) conn.createStatement();
             resultado = state.executeQuery(_query);
-            JOptionPane.showMessageDialog(null, "Operacion Exitosa");
+            System.out.println("Operacion Exitosa");
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -52,6 +54,7 @@ public class conexion {
         return resultado;
     }
 // Para dar altas  los datos
+
     public void setQuery(String _query) {
 
         Statement state = null;
@@ -64,9 +67,15 @@ public class conexion {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Existe problema al realizar la operación con el  Registro");
             e.printStackTrace();
+            System.out.println(e.getMessage());    
+            int error=e.getErrorCode();
+            System.out.println(error);
+            if (error==1062) {
+                JOptionPane.showMessageDialog(null, "Existe Duplicidad en la base de datos.\n Code error: "+error);
+            }
         }
     }
-    
+
     public void close() {
         try {
             conn.close();
